@@ -4,7 +4,7 @@ export class PostsDetails extends Component {
   state = {
     posts: undefined,
     comments: undefined,
-    details: undefined,
+    details: undefined
   };
 
   componentDidMount() {
@@ -30,8 +30,8 @@ export class PostsDetails extends Component {
           this.setState({
             comments
           })
-        )
-        fetch(`https://jsonplaceholder.typicode.com/users/${match.params.id}`)
+        );
+      fetch(`https://jsonplaceholder.typicode.com/users/${match.params.id}`)
         .then(response => response.json())
         .then(details =>
           this.setState({
@@ -48,26 +48,29 @@ export class PostsDetails extends Component {
     const { details } = this.state;
 
     return (
-      <div className='wrapper'>
+      <div className="wrapper">
         <h2>AUTHOR DETAILS</h2>
         {details ? (
-            <ul>
-              <li>Name: {details.name}</li>
-              <li>Email: {details.email}</li>
-              <li>Address: {details.address.street} {details.address.suite}, {details.address.city}</li>
-              <li>Phone: {details.phone}</li>
-              <li>Company: {details.company.name}</li>
-            </ul>
+          <ul>
+            <li>Name: {details.name}</li>
+            <li>Email: {details.email}</li>
+            <li>
+              Address: {details.address.street} {details.address.suite},{" "}
+              {details.address.city}
+            </li>
+            <li>Phone: {details.phone}</li>
+            <li>Company: {details.company.name}</li>
+          </ul>
         ) : (
           <div className="loading">Loading...</div>
         )}
         <h2>POST</h2>
-            {posts ? (
-            <ul>
-              <li>ID: {posts.id}</li>
-              <li>Title: {posts.title}</li>
-              <li>Body: {posts.body}</li>
-            </ul>
+        {posts ? (
+          <ul>
+            <li>ID: {posts.id}</li>
+            <li>Title: {posts.title}</li>
+            <li>Body: {posts.body}</li>
+          </ul>
         ) : (
           <div className="loading">Loading...</div>
         )}
