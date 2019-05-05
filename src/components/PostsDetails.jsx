@@ -50,7 +50,7 @@ export class PostsDetails extends Component {
     return (
       <div className="wrapper">
         <h2>AUTHOR DETAILS</h2>
-        {details ? (
+        {details && Object.keys(details).length>0 ? (
           <ul>
             <li>Name: {details.name}</li>
             <li>Email: {details.email}</li>
