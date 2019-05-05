@@ -20,6 +20,18 @@ export class Posts extends Component {
     const { posts } = this.state;
 
     console.log(posts);
-    return <div />;
+    return (
+        <div>
+        {
+            posts ?
+                posts.map((x,i) => {
+                    return <li key={i}>{x.title}</li>,
+                    <li key={i}>{x.body}</li>
+
+                }) :
+                <div className="loading">Loading...</div>
+            }
+            </div>
+    );
   }
 }
