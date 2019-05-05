@@ -15,23 +15,56 @@ export class PostsDetails extends Component {
         .then(posts =>
           this.setState({
             posts
-          }))
-          .then(() => fetch(`https://jsonplaceholder.typicode.com/comments?postId=${match.params.id}`))
+          })
+        )
+        .then(() =>
+          fetch(
+            `https://jsonplaceholder.typicode.com/comments?postId=${
+              match.params.id
+            }`
+          )
+        )
         .then(response => response.json())
         .then(comments =>
           this.setState({
             comments
-          }))    
-          .catch(error => console.log(error));
-        }
+          })
+        )
+        .catch(error => console.log(error));
+    }
   }
 
   render() {
     const { posts } = this.state;
     const { comments } = this.state;
-
     console.log(posts);
-    console.log(comments);
-    return <div />;
+    return (
+      <div>
+        <h2>POST</h2>
+{/*         {posts ? (
+          posts.map((x, i) => (
+            <ul key={i}>
+              <li>email: {x.email}</li>
+              <li>Name: {x.name}</li>
+              <li>Body: {x.body}</li>
+            </ul>
+          ))
+        ) : (
+          <div className="loading">Loading...</div>
+        )} */}
+        <h2>COMMENTS</h2>
+        {comments ? (
+          comments.map((x, i) => (
+            <ul key={i}>
+              <li>email: {x.email}</li>
+              <li>Name: {x.name}</li>
+              <li>Body: {x.body}</li>
+            </ul>
+          ))
+        ) : (
+          <div className="loading">Loading...</div>
+        )}
+      </div>
+    );
   }
 }

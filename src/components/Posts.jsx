@@ -21,17 +21,21 @@ export class Posts extends Component {
 
     console.log(posts);
     return (
-        <div>
-        {
-            posts ?
-                posts.map((x,i) => {
-                    return <li key={i}>{x.title}</li>,
-                    <li key={i}>{x.body}</li>
-
-                }) :
-                <div className="loading">Loading...</div>
-            }
-            </div>
+      <div>
+        {posts ? (
+          posts.map((x, i) => (
+            <ul key={i}>
+            <li>POSTS</li>
+              <li>ID:{x.id}</li>
+              <li>UserID:{x.userId}</li>
+              <li>Title:{x.title}</li>
+              <li>Body:{x.body}</li>
+            </ul>
+          ))
+        ) : (
+          <div className="loading">Loading...</div>
+        )}
+      </div>
     );
   }
 }
