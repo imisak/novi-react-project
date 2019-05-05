@@ -62,7 +62,7 @@ export class PostsDetails extends Component {
             <li>Company: {details.company.name}</li>
           </ul>
         ) : (
-          <div className="loading">Loading...</div>
+          <div className="loading error">Nema podataka o autoru...</div>
         )}
         <h2>POST</h2>
         {posts ? (
