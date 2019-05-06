@@ -13,10 +13,16 @@ export class PostsDetails extends Component {
     if (match && match.params.id) {
       fetch(`https://jsonplaceholder.typicode.com/posts/${match.params.id}`)
         .then(response => response.json())
-        .then(posts =>
+        .then(posts => {
           this.setState({
             posts
-          })
+          });
+          return posts.userId;
+        })
+        .then(userId =>
+          fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+            .then(response => response.json())
+            .then(details => this.setState({ details }))
         )
         .then(() =>
           fetch(
@@ -29,13 +35,6 @@ export class PostsDetails extends Component {
         .then(comments =>
           this.setState({
             comments
-          })
-        );
-      fetch(`https://jsonplaceholder.typicode.com/users/${match.params.id}`)
-        .then(response => response.json())
-        .then(details =>
-          this.setState({
-            details
           })
         )
         .catch(error => console.log(error));
